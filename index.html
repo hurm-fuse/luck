@@ -7,31 +7,18 @@
     <title>luck lux lora - Lucky Things Finder Tool</title>
     <meta name="description"
         content="Discover your lucky number, color, day, and more with luck lux lora - your simple daily guide to happiness and luck.">
-    <meta name="keywords"
-        content="lucky number, lucky color, lucky day, luck calculator, fortune, daily guide, luck lux lora">
-    <meta name="author" content="luck lux lora">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-
-    <!-- Open Graph for Social Sharing -->
-    <meta property="og:title" content="luck lux lora - Lucky Things Finder Tool">
-    <meta property="og:description" content="Discover your lucky number, color, day, and more with luck lux lora.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://luck-lux-lora.vercel.app/">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="luck lux lora - Lucky Things Finder Tool">
-    <meta name="twitter:description" content="Discover your lucky number, color, day, and more with luck lux lora.">
 
     <style>
         :root {
-            --bg: #ffffff;
-            --card: #ffffff;
-            --text-dark: #111111;
-            --text-gray: #777777;
-            --border: #eeeeee;
-            --accent: #000000;
+            --primary: #6366f1; /* Modern Indigo */
+            --accent: #a855f7; /* Purple */
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
         * {
@@ -42,8 +29,10 @@
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text-dark);
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -52,26 +41,46 @@
 
         .container {
             width: 100%;
-            max-width: 360px;
+            max-width: 420px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 32px;
+            box-shadow: var(--shadow);
             text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
         h1 {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 800;
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
+            background: linear-gradient(to right, #4f46e5, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 8px;
         }
 
         .tagline {
-            font-size: 14px;
-            color: var(--text-gray);
-            margin-bottom: 40px;
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        .input-group-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
         }
 
         .input-box {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1.2fr;
             gap: 12px;
             margin-bottom: 24px;
         }
@@ -79,149 +88,144 @@
         input {
             width: 100%;
             padding: 16px;
-            border: 2px solid var(--border);
+            border: 2px solid #e2e8f0;
             border-radius: 16px;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             text-align: center;
             outline: none;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            background: white;
         }
 
         input:focus {
-            border-color: var(--accent);
-        }
-
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
         }
 
         .main-btn {
             width: 100%;
             padding: 18px;
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white;
             border: none;
-            border-radius: 16px;
-            font-size: 16px;
+            border-radius: 18px;
+            font-size: 17px;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+        }
+
+        .main-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.4);
         }
 
         .main-btn:active {
-            transform: scale(0.97);
+            transform: scale(0.98);
         }
 
         #loader {
             display: none;
-            margin-top: 20px;
+            margin-top: 25px;
             font-weight: 600;
-            color: var(--text-gray);
+            color: var(--primary);
+            letter-spacing: 0.5px;
         }
 
         .results {
             display: none;
-            margin-top: 40px;
+            margin-top: 35px;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
-            animation: fadeIn 0.4s ease-out;
+            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .item {
-            padding: 20px;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            text-align: left;
+            padding: 20px 15px;
+            background: white;
+            border: 1px solid #f1f5f9;
+            border-radius: 24px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .item:hover {
+            transform: translateY(-5px);
         }
 
         .item-full {
             grid-column: span 2;
+            background: linear-gradient(to right, #fafafa, #ffffff);
+            border: 1px dashed var(--primary);
         }
 
         .item label {
             display: block;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 800;
             text-transform: uppercase;
-            color: var(--text-gray);
-            margin-bottom: 6px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
             letter-spacing: 1px;
         }
 
         .item p {
             font-size: 18px;
-            font-weight: 700;
+            font-weight: 800;
+            color: var(--text-main);
         }
 
         .message {
-            font-weight: 400 !important;
+            font-weight: 500 !important;
             font-size: 15px !important;
-            line-height: 1.5;
+            line-height: 1.6;
+            color: #475569 !important;
+        }
+
+        /* Hiding Spinners */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Ad Scripts -->
-    <script src="https://pl28422912.effectivegatecpm.com/dc/13/76/dc137637d48890552d71ddcc5e90d75f.js"></script>
-    <script async="async" data-cfasync="false"
-        src="https://pl28422918.effectivegatecpm.com/48ec33fd785ee0838117549b92ba7a2b/invoke.js"></script>
-    <script src="https://pl28422923.effectivegatecpm.com/da/3a/6a/da3a6ad9f73f1c13e776d3d595a36fb8.js"></script>
-    <script>
-        atOptions = {
-            'key': 'dd5308dc3f5cec449cb4c68276dd7534',
-            'format': 'iframe',
-            'height': 90,
-            'width': 728,
-            'params': {}
-        };
-    </script>
-    <script src="https://www.highperformanceformat.com/dd5308dc3f5cec449cb4c68276dd7534/invoke.js"></script>
-
-    <main class="container" role="main">
+    <main class="container">
         <h1>luck lux lora</h1>
-        <p class="tagline">Lucky Things Finder Tool</p>
+        <p class="tagline">Your Daily Portal to Fortune</p>
 
-        <section class="input-box" aria-label="Enter your birth date">
-            <input type="number" id="day" placeholder="DD" aria-label="Day"
-                oninput="if(value.length>2)value=value.slice(0,2)">
-            <input type="number" id="month" placeholder="MM" aria-label="Month"
-                oninput="if(value.length>2)value=value.slice(0,2)">
-            <input type="number" id="year" placeholder="YYYY" aria-label="Year"
-                oninput="if(value.length>4)value=value.slice(0,4)">
+        <label class="input-group-label">Enter Date of Birth</label>
+        <section class="input-box">
+            <input type="number" id="day" placeholder="DD" oninput="if(value.length>2)value=value.slice(0,2)">
+            <input type="number" id="month" placeholder="MM" oninput="if(value.length>2)value=value.slice(0,2)">
+            <input type="number" id="year" placeholder="YYYY" oninput="if(value.length>4)value=value.slice(0,4)">
         </section>
 
-        <button class="main-btn" onclick="getLuck()">Reveal Luck</button>
+        <button class="main-btn" onclick="getLuck()">Reveal My Luck</button>
 
-        <div id="loader">Calculating...</div>
+        <div id="loader">✨ Consulting the stars...</div>
 
-        <section class="results" id="output" aria-live="polite">
+        <section class="results" id="output">
             <div class="item">
-                <label>Number</label>
+                <label>Lucky Number</label>
                 <p id="out-num">-</p>
             </div>
             <div class="item">
-                <label>Color</label>
+                <label>Lucky Color</label>
                 <p id="out-col">-</p>
             </div>
             <div class="item">
-                <label>Day</label>
+                <label>Lucky Day</label>
                 <p id="out-day">-</p>
             </div>
             <div class="item">
@@ -229,15 +233,10 @@
                 <p id="out-dir">-</p>
             </div>
             <div class="item item-full">
-                <label>Message</label>
+                <label>Your Daily Wisdom</label>
                 <p id="out-msg" class="message">-</p>
             </div>
         </section>
-
-        <!-- Ad Containers -->
-        <div id="container-ads">
-            <div id="container-48ec33fd785ee0838117549b92ba7a2b"></div>
-        </div>
     </main>
 
     <script>
@@ -246,27 +245,31 @@
             const m = document.getElementById("month").value;
             const y = document.getElementById("year").value;
 
-            if (!d || !m || !y || d > 31 || m > 12) {
-                alert("Please enter a valid date.");
+            if (!d || !m || !y || d > 31 || m > 12 || y < 1900) {
+                alert("Please enter a valid birth date.");
                 return;
             }
 
-            document.getElementById("output").style.display = "none";
-            document.getElementById("loader").style.display = "block";
+            // UI feedback
+            const output = document.getElementById("output");
+            const loader = document.getElementById("loader");
+            
+            output.style.display = "none";
+            loader.style.display = "block";
 
             setTimeout(() => {
                 const seed = parseInt(d) + parseInt(m) + parseInt(y.toString().slice(-2));
 
-                const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-                const colors = ["Red", "Blue", "Green", "Yellow", "White", "Black", "Pink", "Orange", "Purple"];
+                const numbers = ["7", "3", "9", "1", "8", "5", "2", "4", "6"];
+                const colors = ["Royal Blue", "Emerald Green", "Crimson Red", "Golden Yellow", "Pure White", "Mystic Purple", "Soft Pink", "Amber", "Midnight Black"];
                 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-                const dirs = ["North", "South", "East", "West"];
+                const dirs = ["North East", "South West", "East", "West"];
                 const msgs = [
-                    "Today will be a very lucky day for you.",
-                    "Focus on your goals and you will win.",
-                    "A good surprise is coming your way soon.",
-                    "Stay calm and keep a big smile today.",
-                    "Everything will go according to your plan."
+                    "A significant positive shift is heading your way. Stay ready.",
+                    "Trust your intuition today; it's sharper than usual.",
+                    "An unexpected conversation will open a new door for you.",
+                    "Focus your energy on one big goal today for maximum success.",
+                    "Your kindness will return to you in an unexpected form today."
                 ];
 
                 document.getElementById("out-num").innerText = numbers[seed % numbers.length];
@@ -275,27 +278,9 @@
                 document.getElementById("out-dir").innerText = dirs[seed % dirs.length];
                 document.getElementById("out-msg").innerText = msgs[seed % msgs.length];
 
-                document.getElementById("loader").style.display = "none";
-                document.getElementById("output").style.display = "grid";
-            }, 600);
-        }
-    </script>
-
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "luck lux lora",
-          "url": "https://yourdomain.com",
-          "applicationCategory": "GameApplication",
-          "description": "Discover your lucky number, color, day, and more with luck lux lora - your simple daily guide.",
-          "operatingSystem": "All",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "INR"
-          }
+                loader.style.display = "none";
+                output.style.display = "grid";
+            }, 800);
         }
     </script>
 </body>
