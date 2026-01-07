@@ -2,26 +2,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- SEO META -->
-    <title>Luck Lux Lora | Lucky Things Finder – Lucky Number, Color & Day</title>
-    <meta name="description"
-        content="Find your lucky number, lucky color, lucky day and direction using your date of birth. Free lucky things calculator – Luck Lux Lora." />
-    <meta name="keywords"
-        content="lucky things finder, lucky number calculator, lucky color by date of birth, lucky day calculator" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://luck-lux-lora.vercel.app/" />
-
-    <!-- FONT -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>luck lux lora - Simple Lucky Tool</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
-        rel="stylesheet" />
+        rel="stylesheet">
 
     <style>
         :root {
             --primary: #6366f1;
-            --accent: #7f1d1d;
+            --accent: #a855f7;
             --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             --card-bg: #ffffff;
             --text-main: #1e293b;
@@ -37,12 +27,22 @@
 
         body {
             background: var(--bg-gradient);
+            background-attachment: fixed;
             color: var(--text-main);
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+        }
+
+        /* Ad Sections - Outside the card */
+        .ad-container {
+            width: 100%;
+            max-width: 728px;
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
         }
 
         .container {
@@ -53,37 +53,43 @@
             border-radius: 28px;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
             text-align: center;
+            border: 1px solid #ffffff;
         }
 
         h1 {
             font-size: 30px;
             font-weight: 800;
-            color: var(--accent);
-            margin-bottom: 6px;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #4f46e5, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
         }
 
         .tagline {
             font-size: 14px;
             color: var(--text-muted);
-            margin-bottom: 28px;
+            margin-bottom: 30px;
         }
 
         .input-box {
             display: grid;
             grid-template-columns: 1fr 1fr 1.2fr;
             gap: 10px;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
 
         input {
+            width: 100%;
             padding: 14px;
-            border-radius: 14px;
             border: 2px solid #f1f5f9;
+            border-radius: 14px;
             font-size: 16px;
             font-weight: 700;
             text-align: center;
-            background: #f8fafc;
             outline: none;
+            background: #f8fafc;
+            transition: 0.2s;
         }
 
         input:focus {
@@ -94,27 +100,41 @@
         .main-btn {
             width: 100%;
             padding: 16px;
-            background: var(--accent);
-            color: #fff;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
             border: none;
             border-radius: 14px;
             font-size: 16px;
             font-weight: 700;
             cursor: pointer;
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.2);
         }
 
         #loader {
             display: none;
-            margin-top: 18px;
+            margin-top: 20px;
             font-weight: 600;
-            color: var(--accent);
+            color: var(--primary);
         }
 
         .results {
             display: none;
-            margin-top: 28px;
+            margin-top: 30px;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .item {
@@ -129,9 +149,11 @@
         }
 
         .item label {
+            display: block;
             font-size: 10px;
             font-weight: 800;
             color: var(--text-muted);
+            margin-bottom: 4px;
             text-transform: uppercase;
         }
 
@@ -140,39 +162,45 @@
             font-weight: 800;
         }
 
-        .seo-content {
-            max-width: 380px;
-            margin-top: 30px;
-            font-size: 14px;
-            color: #475569;
-            line-height: 1.6;
+        .message {
+            font-weight: 500 !important;
+            font-size: 14px !important;
+            color: #475569 !important;
+            line-height: 1.4;
         }
 
-        .seo-content h2,
-        .seo-content h3 {
-            color: #1e293b;
-            margin-bottom: 6px;
-        }
-
-        .seo-content ul {
-            padding-left: 18px;
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
     </style>
 </head>
 
 <body>
 
+    <script src="https://pl28422912.effectivegatecpm.com/dc/13/76/dc137637d48890552d71ddcc5e90d75f.js"></script>
+    <script src="https://pl28422923.effectivegatecpm.com/da/3a/6a/da3a6ad9f73f1c13e776d3d595a36fb8.js"></script>
+
+    <div class="ad-container">
+        <script>
+            atOptions = { 'key': 'dd5308dc3f5cec449cb4c68276dd7534', 'format': 'iframe', 'height': 90, 'width': 728, 'params': {} };
+        </script>
+        <script src="https://www.highperformanceformat.com/dd5308dc3f5cec449cb4c68276dd7534/invoke.js"></script>
+    </div>
+
     <main class="container">
-        <h1>Luck Lux Lora</h1>
+        <h1>luck lux lora</h1>
         <p class="tagline">Find your lucky things today</p>
 
         <section class="input-box">
-            <input type="number" id="day" placeholder="DD" />
-            <input type="number" id="month" placeholder="MM" />
-            <input type="number" id="year" placeholder="YYYY" />
+            <input type="number" id="day" placeholder="DD" oninput="if(value.length>2)value=value.slice(0,2)">
+            <input type="number" id="month" placeholder="MM" oninput="if(value.length>2)value=value.slice(0,2)">
+            <input type="number" id="year" placeholder="YYYY" oninput="if(value.length>4)value=value.slice(0,4)">
         </section>
 
         <button class="main-btn" onclick="getLuck()">Reveal Luck</button>
+
         <div id="loader">Calculating...</div>
 
         <section class="results" id="output">
@@ -194,54 +222,44 @@
             </div>
             <div class="item item-full">
                 <label>Message</label>
-                <p id="out-msg">-</p>
+                <p id="out-msg" class="message">-</p>
             </div>
         </section>
     </main>
 
-    <!-- SEO TEXT CONTENT -->
-    <section class="seo-content">
-        <h2>Lucky Things Finder by Date of Birth</h2>
-        <p>
-            Luck Lux Lora is a free lucky things calculator that helps you find your lucky number,
-            lucky color, lucky day and direction using your date of birth.
-        </p>
-
-        <h3>Why use Luck Lux Lora?</h3>
-        <ul>
-            <li>Free lucky number calculator</li>
-            <li>Instant lucky color results</li>
-            <li>No signup required</li>
-            <li>Works on all devices</li>
-        </ul>
-    </section>
+    <div class="ad-container">
+        <div id="container-48ec33fd785ee0838117549b92ba7a2b"></div>
+        <script async="async" data-cfasync="false"
+            src="https://pl28422918.effectivegatecpm.com/48ec33fd785ee0838117549b92ba7a2b/invoke.js"></script>
+    </div>
 
     <script>
         function getLuck() {
-            const d = +document.getElementById("day").value;
-            const m = +document.getElementById("month").value;
-            const y = +document.getElementById("year").value;
+            const d = document.getElementById("day").value;
+            const m = document.getElementById("month").value;
+            const y = document.getElementById("year").value;
 
-            if (!d || !m || !y || d > 31 || m > 12 || y < 1900) {
-                alert("Please enter a valid date");
+            if (!d || !m || !y || d > 31 || m > 12) {
+                alert("Please enter a valid date.");
                 return;
             }
 
-            document.getElementById("loader").style.display = "block";
             document.getElementById("output").style.display = "none";
+            document.getElementById("loader").style.display = "block";
 
             setTimeout(() => {
-                const seed = d + m + (y % 100);
+                const seed = parseInt(d) + parseInt(m) + parseInt(y.toString().slice(-2));
 
-                const numbers = ["1", "3", "5", "7", "8", "9"];
-                const colors = ["Red", "Green", "Blue", "Yellow", "White", "Black"];
+                // Simple names only
+                const numbers = ["1", "5", "7", "9", "3", "8", "4", "6"];
+                const colors = ["Red", "Green", "Blue", "Yellow", "Pink", "Orange", "White", "Black", "Purple"];
                 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
                 const dirs = ["North", "South", "East", "West"];
                 const msgs = [
-                    "Today is lucky for new beginnings.",
-                    "Good news is coming soon.",
-                    "Focus and success will follow.",
-                    "Positive energy surrounds you."
+                    "Today is a very lucky day for you.",
+                    "You will get some good news soon.",
+                    "Everything will go as you planned.",
+                    "Stay happy and keep working hard."
                 ];
 
                 document.getElementById("out-num").innerText = numbers[seed % numbers.length];
@@ -255,7 +273,6 @@
             }, 600);
         }
     </script>
-
 </body>
 
 </html>
