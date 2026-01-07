@@ -4,19 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>luck lux lora - Lucky Things Finder Tool</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    <title>luck lux lora - Simple Lucky Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
         rel="stylesheet">
 
     <style>
         :root {
             --primary: #6366f1;
             --accent: #a855f7;
-            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             --card-bg: #ffffff;
             --text-main: #1e293b;
             --text-muted: #64748b;
-            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
         * {
@@ -37,117 +36,99 @@
             padding: 20px;
         }
 
-        /* Ad Slots - Outside the Card */
-        .ad-wrapper {
+        /* Ad Sections - Outside the card */
+        .ad-container {
             width: 100%;
             max-width: 728px;
-            /* Standard Banner Width */
-            margin: 20px 0;
+            margin: 15px 0;
             display: flex;
             justify-content: center;
-            overflow: hidden;
         }
 
         .container {
             width: 100%;
-            max-width: 400px;
+            max-width: 380px;
             background: var(--card-bg);
-            padding: 40px 30px;
-            border-radius: 32px;
-            box-shadow: var(--shadow);
+            padding: 35px 25px;
+            border-radius: 28px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
             text-align: center;
-            z-index: 10;
+            border: 1px solid #ffffff;
         }
 
         h1 {
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 800;
-            letter-spacing: -1.5px;
+            letter-spacing: -1px;
             background: linear-gradient(to right, #4f46e5, #9333ea);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
 
         .tagline {
             font-size: 14px;
             color: var(--text-muted);
-            margin-bottom: 35px;
-        }
-
-        .input-group-label {
-            display: block;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            letter-spacing: 1px;
+            margin-bottom: 30px;
         }
 
         .input-box {
             display: grid;
             grid-template-columns: 1fr 1fr 1.2fr;
-            gap: 12px;
-            margin-bottom: 25px;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
         input {
             width: 100%;
-            padding: 15px;
+            padding: 14px;
             border: 2px solid #f1f5f9;
-            border-radius: 16px;
+            border-radius: 14px;
             font-size: 16px;
             font-weight: 700;
             text-align: center;
             outline: none;
-            transition: 0.3s;
             background: #f8fafc;
+            transition: 0.2s;
         }
 
         input:focus {
             border-color: var(--primary);
             background: #fff;
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
         }
 
         .main-btn {
             width: 100%;
-            padding: 18px;
+            padding: 16px;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white;
             border: none;
-            border-radius: 18px;
-            font-size: 17px;
+            border-radius: 14px;
+            font-size: 16px;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
-            transition: 0.3s;
-        }
-
-        .main-btn:hover {
-            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.2);
         }
 
         #loader {
             display: none;
-            margin-top: 25px;
+            margin-top: 20px;
             font-weight: 600;
             color: var(--primary);
         }
 
         .results {
             display: none;
-            margin-top: 35px;
+            margin-top: 30px;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            animation: slideUp 0.5s ease-out;
+            gap: 12px;
+            animation: fadeIn 0.4s ease-out;
         }
 
-        @keyframes slideUp {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(10px);
             }
 
             to {
@@ -157,17 +138,14 @@
         }
 
         .item {
-            padding: 18px;
+            padding: 15px;
             background: #f8fafc;
-            border-radius: 20px;
-            text-align: center;
+            border-radius: 18px;
             border: 1px solid #f1f5f9;
         }
 
         .item-full {
             grid-column: span 2;
-            background: #fff;
-            border: 1px dashed #cbd5e1;
         }
 
         .item label {
@@ -175,21 +153,20 @@
             font-size: 10px;
             font-weight: 800;
             color: var(--text-muted);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             text-transform: uppercase;
         }
 
         .item p {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 800;
-            color: #1e293b;
         }
 
         .message {
             font-weight: 500 !important;
-            font-size: 15px !important;
-            line-height: 1.6;
+            font-size: 14px !important;
             color: #475569 !important;
+            line-height: 1.4;
         }
 
         input::-webkit-outer-spin-button,
@@ -205,24 +182,17 @@
     <script src="https://pl28422912.effectivegatecpm.com/dc/13/76/dc137637d48890552d71ddcc5e90d75f.js"></script>
     <script src="https://pl28422923.effectivegatecpm.com/da/3a/6a/da3a6ad9f73f1c13e776d3d595a36fb8.js"></script>
 
-    <div class="ad-wrapper">
+    <div class="ad-container">
         <script>
-            atOptions = {
-                'key': 'dd5308dc3f5cec449cb4c68276dd7534',
-                'format': 'iframe',
-                'height': 90,
-                'width': 728,
-                'params': {}
-            };
+            atOptions = { 'key': 'dd5308dc3f5cec449cb4c68276dd7534', 'format': 'iframe', 'height': 90, 'width': 728, 'params': {} };
         </script>
         <script src="https://www.highperformanceformat.com/dd5308dc3f5cec449cb4c68276dd7534/invoke.js"></script>
     </div>
 
     <main class="container">
         <h1>luck lux lora</h1>
-        <p class="tagline">Reveal Your Daily Fortune</p>
+        <p class="tagline">Find your lucky things today</p>
 
-        <label class="input-group-label">Your Birth Date</label>
         <section class="input-box">
             <input type="number" id="day" placeholder="DD" oninput="if(value.length>2)value=value.slice(0,2)">
             <input type="number" id="month" placeholder="MM" oninput="if(value.length>2)value=value.slice(0,2)">
@@ -231,7 +201,7 @@
 
         <button class="main-btn" onclick="getLuck()">Reveal Luck</button>
 
-        <div id="loader">✨ Checking the stars...</div>
+        <div id="loader">Calculating...</div>
 
         <section class="results" id="output">
             <div class="item">
@@ -251,13 +221,13 @@
                 <p id="out-dir">-</p>
             </div>
             <div class="item item-full">
-                <label>Your Daily Wisdom</label>
+                <label>Message</label>
                 <p id="out-msg" class="message">-</p>
             </div>
         </section>
     </main>
 
-    <div class="ad-wrapper">
+    <div class="ad-container">
         <div id="container-48ec33fd785ee0838117549b92ba7a2b"></div>
         <script async="async" data-cfasync="false"
             src="https://pl28422918.effectivegatecpm.com/48ec33fd785ee0838117549b92ba7a2b/invoke.js"></script>
@@ -279,15 +249,17 @@
 
             setTimeout(() => {
                 const seed = parseInt(d) + parseInt(m) + parseInt(y.toString().slice(-2));
-                const numbers = ["3", "7", "1", "9", "5", "8", "4"];
-                const colors = ["Royal Blue", "Gold", "Emerald Green", "Crimson", "Mystic Purple"];
-                const days = ["Monday", "Wednesday", "Friday", "Sunday"];
-                const dirs = ["North", "South East", "West", "East"];
+
+                // Simple names only
+                const numbers = ["1", "5", "7", "9", "3", "8", "4", "6"];
+                const colors = ["Red", "Green", "Blue", "Yellow", "Pink", "Orange", "White", "Black", "Purple"];
+                const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+                const dirs = ["North", "South", "East", "West"];
                 const msgs = [
-                    "Success is coming in an unexpected way.",
-                    "Trust your instincts today, they are strong.",
-                    "A positive change is starting this week.",
-                    "Focus on your passion and luck will follow."
+                    "Today is a very lucky day for you.",
+                    "You will get some good news soon.",
+                    "Everything will go as you planned.",
+                    "Stay happy and keep working hard."
                 ];
 
                 document.getElementById("out-num").innerText = numbers[seed % numbers.length];
@@ -298,7 +270,7 @@
 
                 document.getElementById("loader").style.display = "none";
                 document.getElementById("output").style.display = "grid";
-            }, 800);
+            }, 600);
         }
     </script>
 </body>
