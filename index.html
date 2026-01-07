@@ -2,158 +2,303 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>luck lux lora - Lucky Things Finder Tool</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>luck lux lora - Lucky Things Finder Tool</title>
+    <meta name="description"
+        content="Discover your lucky number, color, day, and more with luck lux lora - your simple daily guide to happiness and luck.">
+    <meta name="keywords"
+        content="lucky number, lucky color, lucky day, luck calculator, fortune, daily guide, luck lux lora">
+    <meta name="author" content="luck lux lora">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
+        rel="stylesheet">
 
-<style>
-:root {
-    --bg: #ffffff;
-    --card: #ffffff;
-    --text-dark: #111111;
-    --text-gray: #777777;
-    --border: #eeeeee;
-    --accent: #000000;
-}
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="luck lux lora - Lucky Things Finder Tool">
+    <meta property="og:description" content="Discover your lucky number, color, day, and more with luck lux lora.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://luck-lux-lora.vercel.app/">
 
-* { box-sizing: border-box; margin:0; padding:0; font-family:'Plus Jakarta Sans', sans-serif; }
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="luck lux lora - Lucky Things Finder Tool">
+    <meta name="twitter:description" content="Discover your lucky number, color, day, and more with luck lux lora.">
 
-body { background-color: var(--bg); color: var(--text-dark); display:flex; justify-content:center; align-items:flex-start; min-height:100vh; padding:20px; position: relative; }
+    <style>
+        :root {
+            --bg: #ffffff;
+            --card: #ffffff;
+            --text-dark: #111111;
+            --text-gray: #777777;
+            --border: #eeeeee;
+            --accent: #000000;
+        }
 
-.container { width:100%; max-width:360px; text-align:center; margin-top: 100px; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
 
-h1 { font-size:32px; font-weight:800; letter-spacing:-1px; margin-bottom:8px; }
-.tagline { font-size:14px; color: var(--text-gray); margin-bottom:40px; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-.input-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:24px; }
+        .container {
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+        }
 
-input { width:100%; padding:16px; border:2px solid var(--border); border-radius:16px; font-size:16px; font-weight:600; text-align:center; outline:none; transition:0.3s; }
-input:focus { border-color: var(--accent); }
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
 
-.main-btn { width:100%; padding:18px; background: var(--accent); color:white; border:none; border-radius:16px; font-size:16px; font-weight:700; cursor:pointer; box-shadow:0 10px 20px rgba(0,0,0,0.1);}
-.main-btn:active { transform: scale(0.97); }
+        .tagline {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
 
-#loader { display:none; margin-top:20px; font-weight:600; color:var(--text-gray); }
+        .input-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
 
-.results { display:none; margin-top:40px; grid-template-columns:1fr 1fr; gap:16px; animation:fadeIn 0.4s ease-out; }
-@keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
+        input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            outline: none;
+            transition: 0.3s;
+        }
 
-.item { padding:20px; border:1px solid var(--border); border-radius:20px; text-align:left; }
-.item-full { grid-column: span 2; }
-.item label { display:block; font-size:10px; font-weight:800; text-transform:uppercase; color:var(--text-gray); margin-bottom:6px; letter-spacing:1px; }
-.item p { font-size:18px; font-weight:700; }
-.message { font-weight:400 !important; font-size:15px !important; line-height:1.5; }
+        input:focus {
+            border-color: var(--accent);
+        }
 
-/* Top banner */
-#top-banner { position:fixed; top:0; left:0; width:100%; text-align:center; z-index:999; background:#fff; padding:5px 0; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
-/* Side ads */
-.side-ad { position:fixed; top:120px; width:120px; text-align:center; z-index:998; }
-#left-ad { left:0; }
-#right-ad { right:0; }
+        .main-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
 
-@media(max-width:800px){
-    .side-ad { display:none; }
-}
-</style>
+        .main-btn:active {
+            transform: scale(0.97);
+        }
+
+        #loader {
+            display: none;
+            margin-top: 20px;
+            font-weight: 600;
+            color: var(--text-gray);
+        }
+
+        .results {
+            display: none;
+            margin-top: 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .item {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            text-align: left;
+        }
+
+        .item-full {
+            grid-column: span 2;
+        }
+
+        .item label {
+            display: block;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-gray);
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .item p {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .message {
+            font-weight: 400 !important;
+            font-size: 15px !important;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- Top Banner -->
-<div id="top-banner">
+    <!-- Ad Scripts -->
     <script src="https://pl28422912.effectivegatecpm.com/dc/13/76/dc137637d48890552d71ddcc5e90d75f.js"></script>
-</div>
-
-<!-- Side Ads -->
-<div id="left-ad" class="side-ad">
+    <script async="async" data-cfasync="false"
+        src="https://pl28422918.effectivegatecpm.com/48ec33fd785ee0838117549b92ba7a2b/invoke.js"></script>
     <script src="https://pl28422923.effectivegatecpm.com/da/3a/6a/da3a6ad9f73f1c13e776d3d595a36fb8.js"></script>
-</div>
+    <script>
+        atOptions = {
+            'key': 'dd5308dc3f5cec449cb4c68276dd7534',
+            'format': 'iframe',
+            'height': 90,
+            'width': 728,
+            'params': {}
+        };
+    </script>
+    <script src="https://www.highperformanceformat.com/dd5308dc3f5cec449cb4c68276dd7534/invoke.js"></script>
 
-<div id="right-ad" class="side-ad">
-    <script async="async" data-cfasync="false" src="https://pl28422918.effectivegatecpm.com/48ec33fd785ee0838117549b92ba7a2b/invoke.js"></script>
-</div>
+    <main class="container" role="main">
+        <h1>luck lux lora</h1>
+        <p class="tagline">Lucky Things Finder Tool</p>
 
-<!-- Main Content -->
-<main class="container" role="main">
-<h1>luck lux lora</h1>
-<p class="tagline">Lucky Things Finder Tool</p>
+        <section class="input-box" aria-label="Enter your birth date">
+            <input type="number" id="day" placeholder="DD" aria-label="Day"
+                oninput="if(value.length>2)value=value.slice(0,2)">
+            <input type="number" id="month" placeholder="MM" aria-label="Month"
+                oninput="if(value.length>2)value=value.slice(0,2)">
+            <input type="number" id="year" placeholder="YYYY" aria-label="Year"
+                oninput="if(value.length>4)value=value.slice(0,4)">
+        </section>
 
-<section class="input-box" aria-label="Enter your birth date">
-    <input type="number" id="day" placeholder="DD" aria-label="Day" oninput="if(value.length>2)value=value.slice(0,2)">
-    <input type="number" id="month" placeholder="MM" aria-label="Month" oninput="if(value.length>2)value=value.slice(0,2)">
-    <input type="number" id="year" placeholder="YYYY" aria-label="Year" oninput="if(value.length>4)value=value.slice(0,4)">
-</section>
+        <button class="main-btn" onclick="getLuck()">Reveal Luck</button>
 
-<button class="main-btn" onclick="getLuck()">Reveal Luck</button>
-<div id="loader">Calculating...</div>
+        <div id="loader">Calculating...</div>
 
-<section class="results" id="output" aria-live="polite">
-    <div class="item">
-        <label>Number</label>
-        <p id="out-num">-</p>
-    </div>
-    <div class="item">
-        <label>Color</label>
-        <p id="out-col">-</p>
-    </div>
-    <div class="item">
-        <label>Day</label>
-        <p id="out-day">-</p>
-    </div>
-    <div class="item">
-        <label>Direction</label>
-        <p id="out-dir">-</p>
-    </div>
-    <div class="item item-full">
-        <label>Message</label>
-        <p id="out-msg" class="message">-</p>
-    </div>
-</section>
-</main>
+        <section class="results" id="output" aria-live="polite">
+            <div class="item">
+                <label>Number</label>
+                <p id="out-num">-</p>
+            </div>
+            <div class="item">
+                <label>Color</label>
+                <p id="out-col">-</p>
+            </div>
+            <div class="item">
+                <label>Day</label>
+                <p id="out-day">-</p>
+            </div>
+            <div class="item">
+                <label>Direction</label>
+                <p id="out-dir">-</p>
+            </div>
+            <div class="item item-full">
+                <label>Message</label>
+                <p id="out-msg" class="message">-</p>
+            </div>
+        </section>
 
-<script>
-function getLuck() {
-    const d=document.getElementById("day").value;
-    const m=document.getElementById("month").value;
-    const y=document.getElementById("year").value;
+        <!-- Ad Containers -->
+        <div id="container-ads">
+            <div id="container-48ec33fd785ee0838117549b92ba7a2b"></div>
+        </div>
+    </main>
 
-    if(!d||!m||!y||d>31||m>12){ alert("Please enter a valid date."); return; }
+    <script>
+        function getLuck() {
+            const d = document.getElementById("day").value;
+            const m = document.getElementById("month").value;
+            const y = document.getElementById("year").value;
 
-    document.getElementById("output").style.display="none";
-    document.getElementById("loader").style.display="block";
+            if (!d || !m || !y || d > 31 || m > 12) {
+                alert("Please enter a valid date.");
+                return;
+            }
 
-    setTimeout(()=>{
-        const seed=parseInt(d)+parseInt(m)+parseInt(y.toString().slice(-2));
-        const numbers=["1","2","3","4","5","6","7","8","9"];
-        const colors=["Red","Blue","Green","Yellow","White","Black","Pink","Orange","Purple"];
-        const days=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
-        const dirs=["North","South","East","West"];
-        const msgs=[
-            "Today will be a very lucky day for you.",
-            "Focus on your goals and you will win.",
-            "A good surprise is coming your way soon.",
-            "Stay calm and keep a big smile today.",
-            "Everything will go according to your plan."
-        ];
-        document.getElementById("out-num").innerText=numbers[seed%numbers.length];
-        document.getElementById("out-col").innerText=colors[seed%colors.length];
-        document.getElementById("out-day").innerText=days[seed%days.length];
-        document.getElementById("out-dir").innerText=dirs[seed%dirs.length];
-        document.getElementById("out-msg").innerText=msgs[seed%msgs.length];
+            document.getElementById("output").style.display = "none";
+            document.getElementById("loader").style.display = "block";
 
-        document.getElementById("loader").style.display="none";
-        document.getElementById("output").style.display="grid";
-    },600);
-}
-</script>
+            setTimeout(() => {
+                const seed = parseInt(d) + parseInt(m) + parseInt(y.toString().slice(-2));
 
-<!-- Additional Ad Script -->
-<script>
-atOptions = { 'key':'dd5308dc3f5cec449cb4c68276dd7534', 'format':'iframe', 'height':90, 'width':728, 'params':{} };
-</script>
-<script src="https://www.highperformanceformat.com/dd5308dc3f5cec449cb4c68276dd7534/invoke.js"></script>
+                const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+                const colors = ["Red", "Blue", "Green", "Yellow", "White", "Black", "Pink", "Orange", "Purple"];
+                const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+                const dirs = ["North", "South", "East", "West"];
+                const msgs = [
+                    "Today will be a very lucky day for you.",
+                    "Focus on your goals and you will win.",
+                    "A good surprise is coming your way soon.",
+                    "Stay calm and keep a big smile today.",
+                    "Everything will go according to your plan."
+                ];
 
+                document.getElementById("out-num").innerText = numbers[seed % numbers.length];
+                document.getElementById("out-col").innerText = colors[seed % colors.length];
+                document.getElementById("out-day").innerText = days[seed % days.length];
+                document.getElementById("out-dir").innerText = dirs[seed % dirs.length];
+                document.getElementById("out-msg").innerText = msgs[seed % msgs.length];
+
+                document.getElementById("loader").style.display = "none";
+                document.getElementById("output").style.display = "grid";
+            }, 600);
+        }
+    </script>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "luck lux lora",
+          "url": "https://yourdomain.com",
+          "applicationCategory": "GameApplication",
+          "description": "Discover your lucky number, color, day, and more with luck lux lora - your simple daily guide.",
+          "operatingSystem": "All",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          }
+        }
+    </script>
 </body>
+
 </html>
