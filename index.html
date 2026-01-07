@@ -11,7 +11,7 @@
         <style>
         :root {
             --primary: #6366f1;
-            --accent: #7f1d1d; /* DARK RED (replaced purple) */
+            --accent: #7f1d1d; /* DARK RED ONLY */
             --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             --card-bg: #ffffff;
             --text-main: #1e293b;
@@ -59,9 +59,7 @@
             font-size: 30px;
             font-weight: 800;
             letter-spacing: -1px;
-            background: linear-gradient(to right, #4f46e5, #7f1d1d); /* DARK RED */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent); /* SOLID DARK RED */
             margin-bottom: 5px;
         }
 
@@ -99,21 +97,21 @@
         .main-btn {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, var(--primary), var(--accent)); /* DARK RED */
+            background: var(--accent); /* NO GRADIENT */
             color: white;
             border: none;
             border-radius: 14px;
             font-size: 16px;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 10px 15px -3px rgba(127, 29, 29, 0.25); /* DARK RED */
+            box-shadow: 0 10px 15px -3px rgba(127, 29, 29, 0.25);
         }
 
         #loader {
             display: none;
             margin-top: 20px;
             font-weight: 600;
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .results {
