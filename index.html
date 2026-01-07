@@ -4,9 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HiLucky | Simple Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
-        rel="stylesheet">
+    <title>luck lux lora - Lucky Things Finder Tool</title>
+    <meta name="description" content="Discover your lucky number, color, day, and more with luck lux lora - your simple daily guide to happiness and luck.">
+    <meta name="keywords" content="lucky number, lucky color, lucky day, luck calculator, fortune, daily guide, luck lux lora">
+    <meta name="author" content="luck lux lora">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="luck lux lora - Lucky Things Finder Tool">
+    <meta property="og:description" content="Discover your lucky number, color, day, and more with luck lux lora.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://yourdomain.com/preview-image.png">
+    <meta property="og:url" content="https://yourdomain.com/">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="luck lux lora - Lucky Things Finder Tool">
+    <meta name="twitter:description" content="Discover your lucky number, color, day, and more with luck lux lora.">
+    <meta name="twitter:image" content="https://yourdomain.com/preview-image.png">
+
     <style>
         :root {
             --bg: #ffffff;
@@ -76,7 +92,6 @@
             border-color: var(--accent);
         }
 
-        /* Remove arrows from number input */
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -163,21 +178,24 @@
 
 <body>
 
-    <div class="container">
-        <h1>HiLucky</h1>
+    <main class="container" role="main">
+        <h1>luck lux lora</h1>
         <p class="tagline">Your simple daily guide</p>
 
-        <div class="input-box">
-            <input type="number" id="day" placeholder="DD" oninput="if(value.length>2)value=value.slice(0,2)">
-            <input type="number" id="month" placeholder="MM" oninput="if(value.length>2)value=value.slice(0,2)">
-            <input type="number" id="year" placeholder="YYYY" oninput="if(value.length>4)value=value.slice(0,4)">
-        </div>
+        <section class="input-box" aria-label="Enter your birth date">
+            <input type="number" id="day" placeholder="DD" aria-label="Day"
+                oninput="if(value.length>2)value=value.slice(0,2)">
+            <input type="number" id="month" placeholder="MM" aria-label="Month"
+                oninput="if(value.length>2)value=value.slice(0,2)">
+            <input type="number" id="year" placeholder="YYYY" aria-label="Year"
+                oninput="if(value.length>4)value=value.slice(0,4)">
+        </section>
 
         <button class="main-btn" onclick="getLuck()">Reveal Luck</button>
 
         <div id="loader">Calculating...</div>
 
-        <div class="results" id="output">
+        <section class="results" id="output" aria-live="polite">
             <div class="item">
                 <label>Number</label>
                 <p id="out-num">-</p>
@@ -198,8 +216,8 @@
                 <label>Message</label>
                 <p id="out-msg" class="message">-</p>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <script>
         function getLuck() {
@@ -207,7 +225,6 @@
             const m = document.getElementById("month").value;
             const y = document.getElementById("year").value;
 
-            // Simple validation error check
             if (!d || !m || !y || d > 31 || m > 12) {
                 alert("Please enter a valid date.");
                 return;
@@ -219,7 +236,6 @@
             setTimeout(() => {
                 const seed = parseInt(d) + parseInt(m) + parseInt(y.toString().slice(-2));
 
-                // Simple Data
                 const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
                 const colors = ["Red", "Blue", "Green", "Yellow", "White", "Black", "Pink", "Orange", "Purple"];
                 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -232,7 +248,6 @@
                     "Everything will go according to your plan."
                 ];
 
-                // Setting results
                 document.getElementById("out-num").innerText = numbers[seed % numbers.length];
                 document.getElementById("out-col").innerText = colors[seed % colors.length];
                 document.getElementById("out-day").innerText = days[seed % days.length];
@@ -242,6 +257,24 @@
                 document.getElementById("loader").style.display = "none";
                 document.getElementById("output").style.display = "grid";
             }, 600);
+        }
+    </script>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "luck lux lora",
+          "url": "https://yourdomain.com",
+          "applicationCategory": "GameApplication",
+          "description": "Discover your lucky number, color, day, and more with luck lux lora - your simple daily guide.",
+          "operatingSystem": "All",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          }
         }
     </script>
 </body>
